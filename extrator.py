@@ -1,5 +1,6 @@
 import requests 
 import pandas as pd
+from datetime import datetime
 
 #minha API Key da footbal-data.org
 api_key = "8408fa9619224599b4f9607ac3cd0518"

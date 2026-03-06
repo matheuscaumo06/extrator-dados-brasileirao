@@ -1,4 +1,5 @@
 # ⚽ Pipeline ETL - Classificação do Brasileirão Série A
+> ⚠️ **Nota:** A tabela CSV disponibilizada neste repositório representa o estado do campeonato extraído no dia **06/03/2026**. Se você rodar o script hoje, os dados serão atualizados para o momento atual.
 
 ## 📖 Sobre o Projeto
 Este projeto consiste em um pipeline simples de **Extração, Transformação e Carga (ETL)** de dados de futebol. O script conecta-se à API pública do [football-data.org](https://www.football-data.org/), extrai a tabela de classificação atualizada do Campeonato Brasileiro (Série A), realiza o tratamento dos dados estruturados em JSON e exporta o resultado final para um arquivo CSV pronto para análise.
