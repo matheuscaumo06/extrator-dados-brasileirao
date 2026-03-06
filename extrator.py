@@ -17,13 +17,25 @@ resposta = requests.get(url, headers=headers)
 #Verificação da conexão ( 200 = OK )
 if resposta.status_code == 200:
     dados_json = resposta.json()
-    
     tabela = dados_json['standings'][0]['table']
-    
-    #transforma o JSON em uma tabela do Pandas
     df = pd.DataFrame(tabela)
     
-    print("Dados extraídos!")
-    print(df.head()) #Mostra as 5 primeiras linhas da tabela[
+    #Limpeza de dados
+    df['nome_time'] = df['team'].apply(lambda x: x['name'])
+    
+    #Selecionando as colunas que importam
+    colunas_selecionadas = ['position', 'nome_time', 'points','playedGames','won','draw','lost']
+    df_limpo = df[colunas_selecionadas].copy()
+    
+    #Traduzindo os nomes das colunas
+    df_limpo.columns = ['Posicao', 'Time', 'Pontos', 'Jogos', 'Vitorias', 'Empates', 'Derrotas']
+    
+    print("\n--- TABELA LIMPA ---")
+    print (df_limpo.head())
+    
+    #Exportação dos Dados
+    df_limpo.to_csv("classificacao_brasileirao.csv", index=False, encoding='utf-8')
+    print("\nSucesso! Arquivo 'classificacao_brasileirao.csv' salvo.")
+    
 else:
     print(f"Erro: {resposta.status_code}")
