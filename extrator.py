@@ -1,9 +1,12 @@
 import requests 
 import pandas as pd
-from datetime import datetime
+import os 
+from dotenv import load_dotenv
+
+load_dotenv()
 
 #minha API Key da footbal-data.org
-api_key = "8408fa9619224599b4f9607ac3cd0518"
+api_key = os.getenv("API_KEY_FOOTBALL")
 
 # URL
 url = "https://api.football-data.org/v4/competitions/2013/standings"
